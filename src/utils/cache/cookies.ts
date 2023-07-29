@@ -12,3 +12,12 @@ export const setToken = (token: string) => {
 export const removeToken = () => {
   Cookies.remove(CacheKey.TOKEN)
 }
+export const getRole = () => {
+  return Cookies.get(CacheKey.ROLE)
+}
+export const setRole = (role: string) => {
+  Cookies.set(CacheKey.ROLE, role)
+}
+export const removeRole = () => {
+  Cookies.remove(CacheKey.ROLE)
+}

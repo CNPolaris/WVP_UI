@@ -4,7 +4,7 @@ import { defineStore } from "pinia"
 import { usePermissionStore } from "./permission"
 import { useTagsViewStore } from "./tags-view"
 import { useSettingsStore } from "./settings"
-import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
+import { getToken, removeToken, setToken, getRole, setRole, removeRole } from "@/utils/cache/cookies"
 import router, { resetRouter } from "@/router"
 import { loginApi } from "@/api/login"
 import { type LoginRequestData } from "@/api/login/types/login"
@@ -29,6 +29,12 @@ export const useUserStore = defineStore("user", () => {
     setToken(data.accessToken)
     token.value = data.accessToken
     roles.value = [data.role.name]
+    setRole(roles.value.toString())
+  }
+  /** 获取权限信息 */
+  const getInfo = async () => {
+    const role_cache = getRole()
+    roles.value = role_cache?.split(",") as string[]
   }
   /** 切换角色 */
   const changeRoles = async (role: string) => {
@@ -45,6 +51,7 @@ export const useUserStore = defineStore("user", () => {
   /** 登出 */
   const logout = () => {
     removeToken()
+    removeRole()
     token.value = ""
     roles.value = []
     resetRouter()
@@ -64,7 +71,7 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
-  return { token, roles, username, setRoles, login, changeRoles, logout, resetToken }
+  return { token, roles, username, setRoles, login, getInfo, changeRoles, logout, resetToken }
 })
 
 /** 在 setup 外使用 */
