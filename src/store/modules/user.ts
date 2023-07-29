@@ -28,7 +28,7 @@ export const useUserStore = defineStore("user", () => {
     const { data } = await loginApi({ username, password })
     setToken(data.accessToken)
     token.value = data.accessToken
-    setRoles([data.role.name])
+    roles.value = [data.role.name]
   }
   /** 切换角色 */
   const changeRoles = async (role: string) => {

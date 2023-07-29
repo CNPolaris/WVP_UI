@@ -38,7 +38,7 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
       proxy: {
         "/api": {
           // target: "https://mock.mengxuegu.com/mock/63218b5fb4c53348ed2bc212/api/v1",
-          target: "http://10.10.1.101:18978",
+          target: "http://www.ylcx.co:18978",
           ws: true,
           /** 是否允许跨域 */
           changeOrigin: true
