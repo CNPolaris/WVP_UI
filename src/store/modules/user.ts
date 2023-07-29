@@ -6,10 +6,9 @@ import { useTagsViewStore } from "./tags-view"
 import { useSettingsStore } from "./settings"
 import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
 import router, { resetRouter } from "@/router"
-import { loginApi, getUserInfoApi } from "@/api/login"
+import { loginApi } from "@/api/login"
 import { type LoginRequestData } from "@/api/login/types/login"
 import { type RouteRecordRaw } from "vue-router"
-import asyncRouteSettings from "@/config/async-route"
 
 export const useUserStore = defineStore("user", () => {
   const token = ref<string>(getToken() || "")
@@ -25,24 +24,17 @@ export const useUserStore = defineStore("user", () => {
     roles.value = value
   }
   /** 登录 */
-  const login = async ({ username, password, code }: LoginRequestData) => {
-    const { data } = await loginApi({ username, password, code })
-    setToken(data.token)
-    token.value = data.token
-  }
-  /** 获取用户详情 */
-  const getInfo = async () => {
-    const { data } = await getUserInfoApi()
-    username.value = data.username
-    // 验证返回的 roles 是否为一个非空数组，否则塞入一个没有任何作用的默认角色，防止路由守卫逻辑进入无限循环
-    roles.value = data.roles?.length > 0 ? data.roles : asyncRouteSettings.defaultRoles
+  const login = async ({ username, password }: LoginRequestData) => {
+    const { data } = await loginApi({ username, password })
+    setToken(data.accessToken)
+    token.value = data.accessToken
+    setRoles([data.role.name])
   }
   /** 切换角色 */
   const changeRoles = async (role: string) => {
     const newToken = "token-" + role
     token.value = newToken
     setToken(newToken)
-    await getInfo()
     permissionStore.setRoutes(roles.value)
     resetRouter()
     permissionStore.dynamicRoutes.forEach((item: RouteRecordRaw) => {
@@ -72,7 +64,7 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
-  return { token, roles, username, setRoles, login, getInfo, changeRoles, logout, resetToken }
+  return { token, roles, username, setRoles, login, changeRoles, logout, resetToken }
 })
 
 /** 在 setup 外使用 */
