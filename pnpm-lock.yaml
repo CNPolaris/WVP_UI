@@ -2502,6 +2502,24 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
+  /echarts-amap@1.0.0-rc.6:
+    resolution: {integrity: sha512-cYJCKoQdnkZXrGweYrveU1HruZd1c0KmsF1U8o3FtsvgR2jVL5ZUpGFjMmFtpolHOUFqxizk+s+QBLkYuOWL6Q==}
+    dev: false
+
+  /echarts-liquidfill@2.0.6(echarts@5.4.2)(zrender@4.3.2):
+    resolution: {integrity: sha512-p+AH0O9/BtwXMQQyhjJbMZo+GwRAgWG/DCyK5r27PQzpS0UWrgXu57MyEFc0A8Ub3sRuqEu08BuxwHICBkSWSQ==}
+    peerDependencies:
+      echarts: ^4.8.0
+      zrender: ^4.3.1
+    dependencies:
+      echarts: 5.4.2
+      zrender: 4.3.2
+    dev: false
+
+  /echarts-wordcloud@1.1.3:
+    resolution: {integrity: sha512-Et8D5xEAoYkidmHun+hEH+2lF9dhCt6D0JJ390vlr2r/1zwhhZAbcL01CEvG93QcMcJpSvSPK8vRiGkTbMHRxg==}
+    dev: false
+
   /echarts@5.4.2:
     resolution: {integrity: sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA==}
     dependencies:
@@ -3964,6 +3982,10 @@ packages:
       boolbase: 1.0.0
     dev: true
 
+  /numerify@1.2.9:
+    resolution: {integrity: sha512-X4QzQiytV5ZN3TVLhzbtFzjTarUNnaa1pgNDFqt7u7Nqhxe7FvY2eYrGt4WYHlYXDqgtfC/n/a5nJ2y0LijV8w==}
+    dev: false
+
   /nwsapi@2.2.7:
     resolution: {integrity: sha512-ub5E4+FBPKwAZx0UwIQOjYWGHTEq5sPqHQNRN8Z9e4A7u3Tj1weLJsL59yH9vmvqEtBHaOmT6cYQKIZOxp35FQ==}
     dev: true
@@ -5094,6 +5116,27 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
+  /utils-lite@0.1.10:
+    resolution: {integrity: sha512-jlHvdtI8MyWURF/3u+ufIjf1Cs5WjN6WZl9qO8dEkZsVjaI7X5YMUhaCFzkvB69ljt6fo4Dd7V/Oj2NJOFDFOQ==}
+    dev: false
+
+  /v-charts@1.19.0(echarts@5.4.2)(vue@3.3.4)(zrender@4.3.2):
+    resolution: {integrity: sha512-vm2HBUmxAsXK0ivwce9LytcpqrItDA5JSPLYVxZXtiuoyhcn80XX1/3dPJd/1GqG1OYv3jfBo1s9ra4q8GowqA==}
+    peerDependencies:
+      echarts: '>3.0.0'
+      vue: '>2.0.0'
+    dependencies:
+      echarts: 5.4.2
+      echarts-amap: 1.0.0-rc.6
+      echarts-liquidfill: 2.0.6(echarts@5.4.2)(zrender@4.3.2)
+      echarts-wordcloud: 1.1.3
+      numerify: 1.2.9
+      utils-lite: 0.1.10
+      vue: 3.3.4
+    transitivePeerDependencies:
+      - zrender
+    dev: false
+
   /vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
@@ -5461,6 +5504,10 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  /zrender@4.3.2:
+    resolution: {integrity: sha512-bIusJLS8c4DkIcdiK+s13HiQ/zjQQVgpNohtd8d94Y2DnJqgM1yjh/jpDb8DoL6hd7r8Awagw8e3qK/oLaWr3g==}
+    dev: false
 
   /zrender@5.4.3:
     resolution: {integrity: sha512-DRUM4ZLnoaT0PBVvGBDO9oWIDBKFdAVieNWxWwK0niYzJCMwGchRk21/hsE+RKkIveH3XHCyvXcJDkgLVvfizQ==}

@@ -7,7 +7,6 @@ const { initTheme } = useTheme()
 
 /** 初始化主题 */
 initTheme()
-
 </script>
 
 <template>

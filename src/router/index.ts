@@ -55,6 +55,22 @@ export const constantRoutes: RouteRecordRaw[] = [
         }
       }
     ]
+  },
+  {
+    path: "/device",
+    component: Layouts,
+    children: [
+      {
+        path: "gb-list",
+        component: () => import("@/views/device/list.vue"),
+        name: "GB28281",
+        meta: {
+          title: "国标设备",
+          svgIcon: "monitor",
+          affix: true
+        }
+      }
+    ]
   }
 ]
 
